@@ -1,0 +1,39 @@
+libname adam '/home/u64504739';
+
+data adam.adsl;
+  length STUDYID $10 USUBJID $15 TRT01P TRT01A $20
+         SAFETYFL PKFL SAFFL $1 SEX $1
+         RFSTDTC RFENDTC $10;
+
+  input STUDYID $ USUBJID $ TRT01P $ TRT01A $
+        SAFETYFL $ PKFL $ SAFFL $
+        RFSTDTC $ RFENDTC $
+        AGE SEX $;
+
+  datalines;
+STDY01 STDY01-001 Placebo Placebo Y Y Y 2023-01-05 2023-02-01 54 M
+STDY01 STDY01-002 Placebo DrugX  Y Y Y 2023-01-07 2023-02-10 60 F
+STDY01 STDY01-003 DrugX   DrugX  Y Y Y 2023-01-10 2023-02-20 48 M
+STDY01 STDY01-004 DrugX   DrugX  Y N Y 2023-01-12 2023-01-25 67 F
+STDY01 STDY01-005 DrugX   DrugX  N N N .          .          51 M
+;
+run;
+
+data aa;
+ set adam.adsl;
+ length trtgrp $10 agegr1 $3;
+ 
+ TRTGRP = TRT01A;
+ if age < 65 then agegr1 = 'Y' ;
+ else agegr1 = 'F';
+ 
+ where safetyfl = 'Y' and PKFL = 'Y';
+run;
+
+proc sql;
+create table bb as
+	select count(*) as count
+	  from aa
+	 group by trtgrp, safetyfl, pkfl;
+quit;
+ 	 	   
