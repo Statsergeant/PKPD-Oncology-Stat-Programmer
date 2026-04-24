@@ -4,9 +4,9 @@ This is my study material for my work.
 
 
 
-| Category | Title | Source | Notes | Check |
+| Category | Title | Source | Notes | Review |
 
-|---------|--------|---------|--------| ------ |
+|---------|--------|---------|--------|--------|
 
 | PK | 1. Introduction to Pharmacokinetics - Lecture 01 (Intro to PK Analysis) | Merck's 2‑day Course | Webcasting.merck.com | V |
 
@@ -55,6 +55,4 @@ This is my study material for my work.
 | PP | 210. Phoenix PP Spec | Rick | PPT + recording in PKPD Training Library |  |
 
 | ADA | 220. Clinical Immunogenicity | Diana | From QP2 shared training space |  |
-
-
 
